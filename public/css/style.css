@@ -1,6 +1,7 @@
-body{
+html,body{
     font-family: "poppins", sans-serif;
     overflow-x: hidden;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
