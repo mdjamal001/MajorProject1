@@ -1,0 +1,117 @@
+<div class="nav-expanded">
+  <nav class="navbar navbar-expand-sm bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i>&nbsp;WanderNest</a>
+
+      <form class="d-flex ms-auto" role="search">
+        <input class="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-danger search-btn" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item me-5">
+          <a class="nav-link" href="/listings/new">Add your place</a>
+        </li>
+        <% if(!user){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/signin">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-danger" href="/signup">Sign Up</a>
+          </li>
+          <% }else{ %>
+            <li class="nav-item">
+              <a class="btn btn-danger" href="/logout">Logout</a>
+            </li>
+            <% } %>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+
+<div class="nav-shrinked sticky-top bg-light">
+  <input type="checkbox" id="opcl" />
+  <div class="openbtn">
+    <label for="opcl">
+      <i class="fa-solid fa-bars"></i>
+    </label>
+  </div>
+  <form action="#">
+    <input type="text" placeholder="Location" class="form-control">
+    <button class="btn btn-danger text-light" style="border-radius: 40%;"><i
+        class="fa-solid fa-magnifying-glass"></i></button>
+  </form>
+
+  <div class="overlay"></div>
+
+  <div class="sidebar">
+    <div class="title">
+      <h4 class="text-danger"><i class="fa-regular fa-compass"></i>&nbsp;WanderNest</h4>
+      <div class="closebtn">
+        <label for="opcl">
+          <i class="fa-solid fa-xmark"></i>
+        </label>
+      </div>
+    </div>
+    <div class="sidebar-content">
+      <div class="sidebar-content-top">
+        <ul>
+          <li>
+            <i class="fa-solid fa-house"></i>
+            <a href="/listings">Home</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-plus"></i>
+            <a href="/listings/new">Add your place</a>
+          </li>
+          <li>
+            <i class="fa-regular fa-calendar"></i>
+            <a href="#">Events</a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-content-bottom">
+        <div class="signinorsignup">
+          <ul>
+            <% if(!user){ %>
+              <li id="li-no-effects">
+                <a class="btn btn-outline-primary text-primary me-2" href="/signin">Sign In</a>
+                <a class="btn btn-primary text-light" href="/signup">Sign Up</a>
+              </li>
+              <% }else{ %>
+                <li class="">
+                  <a class="text-danger" href="/logout"><i
+                      class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;&nbsp;Logout</a>
+                </li>
+                <% } %>
+          </ul>
+        </div>
+        <div class="social">
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-x-twitter"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  let checkbox = document.querySelector("#opcl");
+  let overlay = document.querySelector(".overlay")
+  checkbox.addEventListener("click", () => {
+    if (checkbox.checked == true) {
+      document.body.classList.add("no-scroll");
+    }
+    else {
+      document.body.classList.remove("no-scroll")
+    }
+  })
+
+  overlay.addEventListener("click", () => {
+    checkbox.checked = false
+    document.body.classList.remove("no-scroll")
+  })
+</script>

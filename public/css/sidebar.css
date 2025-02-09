@@ -1,0 +1,148 @@
+#opcl{
+    display: none;
+}
+
+.openbtn i{
+    font-size:x-large;
+    margin: 20px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+.openbtn i:hover{
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+ul li a{
+    padding-left: 10px;
+    text-decoration: none;
+    
+}
+.sidebar a{
+    color: black;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    left: -230px;
+    padding: 1px;
+    height: 100vh;
+    
+    transition: 0.5s;
+    /* background-color: #252525; */
+    width: 220px;
+    background: rgba(240,240,240,0.5); 
+    backdrop-filter: blur(10px);
+    /* -webkit-backdrop-filter: blur(10px); */
+}
+
+.sidebar-content{
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 999;
+    display: none;
+}
+
+.title{
+    margin: 5px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    user-select: none;
+    font-size: larger;
+    display: flex;
+    justify-content: space-around;
+}
+.closebtn i{
+    padding: 4px;
+    opacity: 0.6;
+    border-radius: 40%;
+    transition: 0.4s;
+}
+.closebtn i:hover{
+    opacity: 1;
+    transform: scale(1.2);
+}
+.closebtn i:active{
+    opacity: 0.5;
+}
+.sidebar ul{
+    padding-left: 0 ;
+}
+.sidebar li{
+    list-style: none;
+    text-decoration: none;
+    padding: 10px;
+    padding-bottom: 15px;
+    font-size: larger;
+    user-select: none;
+    transition: 0.3s;
+}
+.sidebar li:hover{
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); ;
+}
+.sidebar li:active{
+    background-color: #dddddd;
+}
+#li-no-effects:hover{
+    box-shadow: none;
+}
+#li-no-effects:active{
+    background-color: transparent;
+}
+
+.sidebar li i{
+    margin: 0px !important;
+}
+
+.social{
+    margin: 30px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.social i{
+    opacity: 0.5;
+    transition: 0.3s;
+}
+.social i:hover{
+    opacity: 1;
+    transform: scale(1.2);
+}
+.social i:active{
+    opacity: 0.5;
+    color: #bbbbbb;
+}
+
+#opcl:checked ~ .sidebar{
+    left: 0;
+    opacity: 1;
+}
+#opcl:checked ~ .overlay{
+    display: block;
+}
+#opcl:checked ~ body{
+    background-color: #303030;
+}
+#opcl:checked ~ .openbtn{
+    opacity: 0;
+}
+
+.bg-body-custom{
+    background: rgb(255, 255, 255,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.no-scroll{
+    overflow: hidden;
+}
