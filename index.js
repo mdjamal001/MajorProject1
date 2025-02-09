@@ -45,14 +45,14 @@ app.use((req, res, next) => {
 const store = MongoStore.create({
   mongoUrl: mongoURL,
   crypto: {
-    secret: "mysecretkey",
+    secret: process.env.SECRET,
   },
   touchAfter: 24 * 3600,
 });
 
 const sessionOptions = {
   store,
-  secret: "n4t57t8u5h85g85u569uy",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
