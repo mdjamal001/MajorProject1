@@ -19,7 +19,7 @@ pipeline {
                 // Start server in background
                 bat 'start /B node index.js'
                 // Wait for few seconds to make sure server is ready
-                bat 'timeout /T 5'
+                bat 'timeout /T 5 /nobreak'
             }
         }
 
