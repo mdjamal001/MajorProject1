@@ -15,13 +15,12 @@ pipeline {
         }
 
         stage('Start Server') {
-            steps {
-                // Start server in background
-                bat 'start /B node index.js'
-                // Wait for few seconds to make sure server is ready
-                bat 'timeout /T 5 /nobreak'
-            }
-        }
+    steps {
+        bat 'start /B node index.js'
+        bat 'ping 127.0.0.1 -n 6 > nul'
+    }
+}
+
 
         stage('Run Selenium Tests') {
             steps {
