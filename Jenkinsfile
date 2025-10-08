@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/mdjamal001/MajorProject1.git'
+                git 'https://github.com/mdjamal001/MajorProject1.git'
             }
         }
 
@@ -14,23 +14,32 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Start Server') {
             steps {
-                echo 'Building...'
+                // Start server in background
+                bat 'start /B node index.js'
+                // Wait a few seconds to make sure server is ready
+                bat 'timeout /T 5'
             }
         }
 
-        stage('Test') {
+        stage('Run Selenium Tests') {
             steps {
-                echo 'Running Selenium tests...'
-                // your teammate’s part will go here eventually
+                bat 'npm test'
             }
         }
 
         stage('Notify Deploy') {
             steps {
-                echo 'Render will automatically deploy once this push is complete.'
+                echo 'Tests completed. Ready for deployment to Render.'
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up...'
+            // Optional: kill node server if needed
         }
     }
 }
